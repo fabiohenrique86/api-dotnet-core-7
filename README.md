@@ -1,3 +1,4 @@
-User credentials for authentication
-user: admin
-password: 123
+#User credentials for authentication#
+
+#user: admin#
+#password: 123#
