@@ -13,11 +13,11 @@ namespace WebApplication2.Controllers
     public class AuthController : ControllerBase
     {
         [HttpPost("login")]
-        public IActionResult Login([FromBody] Dto.UserCredential cred)
+        public IActionResult Login([FromBody] Dto.UserCredentialDto userCredentialDto)
         {
-            if (cred.UserName == "admin" && cred.Password == "123")
+            if (userCredentialDto.UserName == "admin" && userCredentialDto.Password == "123")
             {
-                var claims = new[] { new Claim("name", cred.UserName) };
+                var claims = new[] { new Claim("name", userCredentialDto.UserName) };
 
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
