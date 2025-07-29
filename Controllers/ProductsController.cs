@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Interfaces;
-using WebApplication2.Model;
 
 namespace WebApplication2.Controllers
 {
@@ -23,7 +22,9 @@ namespace WebApplication2.Controllers
         {
             _logger.Log(LogLevel.Information, "Getting Product");
 
-            return Ok(await _iProductService.GetAllAsync());
+            var products = await _iProductService.GetAllAsync();
+
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
@@ -40,7 +41,7 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Model.Product>> Post(Product product)
+        public async Task<ActionResult<Model.Product>> Post(Model.Product product)
         {
             _logger.Log(LogLevel.Information, $"Posting product");
 

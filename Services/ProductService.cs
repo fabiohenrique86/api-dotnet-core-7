@@ -18,7 +18,7 @@ namespace WebApplication2.Services
             return await _context.Products.ToListAsync<Model.Product>();
         }
 
-        public async Task<Model.Product> GetByIdAsync(int id)
+        public async Task<Model.Product?> GetByIdAsync(int id)
         {
             return await _context.Products.FindAsync(id);
         }
